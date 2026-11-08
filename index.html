@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Taller GSE</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Taller GSE</h1>
+        <p>Consulta y control de equipos</p>
+    </header>
+
+    <main>
+
+        <!-- ACCESO DE USUARIOS DISCRETO -->
+        <section class="acceso-usuarios" id="seccionAcceso">
+
+            <!-- ESTADO SIN SESIÓN -->
+            <details id="panelLogin" class="acceso-discreto">
+
+                <summary>
+                    <span>Acceso de usuarios</span>
+                    <span class="acceso-indicacion">Iniciar sesión para modificar equipos</span>
+                </summary>
+
+                <form id="formLogin">
+
+                    <div>
+                        <label for="loginEmail">Correo electrónico</label>
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Ingrese su correo"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="loginPassword">Contraseña</label>
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Ingrese su contraseña"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" id="btnLogin">
+                        Iniciar sesión
+                    </button>
+
+                    <p id="mensajeLogin" role="status"></p>
+
+                </form>
+
+            </details>
+
+            <!-- ESTADO CON SESIÓN -->
+            <div id="panelUsuario" hidden>
+
+                <h2>Sesión activa</h2>
+
+                <p>
+                    Usuario:
+                    <strong id="usuarioActual"></strong>
+                </p>
+
+                <p>
+                    Ya puedes modificar el estado y el horómetro
+                    de los equipos.
+                </p>
+
+                <button type="button" id="btnCerrarSesion">
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESUMEN DE ESTADOS -->
+        <section class="resumen-estados">
+
+            <div class="resumen-titulo">
+                <h2>Estado general de equipos</h2>
+                <p>Resumen actualizado desde la base de datos</p>
+            </div>
+
+            <div class="resumen-grid">
+
+                <div class="resumen-card operativo">
+                    <span class="resumen-cantidad" id="totalOperativos">—</span>
+                    <span class="resumen-label">Operativos</span>
+                </div>
+
+                <div class="resumen-card inoperativo">
+                    <span class="resumen-cantidad" id="totalInoperativos">—</span>
+                    <span class="resumen-label">Inoperativos</span>
+                </div>
+
+                <div class="resumen-card mantenimiento">
+                    <span class="resumen-cantidad" id="totalMantenimiento">—</span>
+                    <span class="resumen-label">En mantenimiento</span>
+                </div>
+
+                <div class="resumen-card cepa">
+                    <span class="resumen-cantidad" id="totalCEPA">—</span>
+                    <span class="resumen-label">Reporte de CEPA</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUSCADOR DE EQUIPOS -->
+        <section class="buscador">
+
+            <h2>Consultar equipo</h2>
+
+            <p>
+                Ingrese el código del equipo para consultar su información.
+            </p>
+
+            <div class="buscador-contenido">
+
+                <input
+                    type="text"
+                    id="codigoEquipo"
+                    placeholder="Ejemplo: 0101002"
+                    autocomplete="off"
+                >
+
+                <button id="btnBuscar">
+                    Buscar
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTADO DE LA CONSULTA -->
+        <section id="resultadoEquipo">
+
+            <p class="mensaje-inicial">
+                Ingrese un código para consultar un equipo.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- LIBRERÍA SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- CONEXIÓN Y FUNCIONES DE LA APLICACIÓN -->
+    <script src="app.js"></script>
+
+</body>
+
+</html>

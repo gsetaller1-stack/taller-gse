@@ -1,0 +1,1174 @@
+
+/* =========================================================
+   TALLER GSE
+   Sistema de consulta y control de equipos
+   Diseño profesional - Responsive
+========================================================= */
+
+
+/* =========================================================
+   01. VARIABLES Y CONFIGURACIÓN GENERAL
+========================================================= */
+
+:root {
+    --navy-950: #0b1530;
+    --navy-900: #101f46;
+    --navy-800: #172554;
+    --navy-700: #1e3a8a;
+
+    --blue-600: #2563eb;
+    --blue-500: #3b82f6;
+    --blue-100: #dbeafe;
+    --blue-50: #eff6ff;
+
+    --green-600: #16a34a;
+    --green-100: #dcfce7;
+    --green-800: #166534;
+
+    --red-600: #dc2626;
+    --red-100: #fee2e2;
+    --red-800: #991b1b;
+
+    --orange-600: #d97706;
+    --orange-100: #fef3c7;
+    --orange-800: #92400e;
+
+    --background: #f3f6fb;
+    --surface: #ffffff;
+    --surface-secondary: #f8fafc;
+
+    --text-primary: #172033;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+
+    --border: #e2e8f0;
+    --border-dark: #cbd5e1;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.09);
+
+    --transition: all 0.22s ease;
+}
+
+
+/* =========================================================
+   02. REINICIO GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+a {
+    color: inherit;
+}
+
+input,
+select {
+    outline: none;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   03. ENCABEZADO PRINCIPAL
+========================================================= */
+
+header {
+    position: relative;
+    background: linear-gradient(
+        115deg,
+        var(--navy-950) 0%,
+        var(--navy-800) 55%,
+        #1d4ed8 100%
+    );
+
+    color: #ffffff;
+    padding: 27px 5%;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.16);
+    overflow: hidden;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    right: -70px;
+    top: -150px;
+    pointer-events: none;
+}
+
+header h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 27px;
+    font-weight: 750;
+    letter-spacing: -0.7px;
+    line-height: 1.3;
+}
+
+header p {
+    position: relative;
+    z-index: 1;
+    margin-top: 5px;
+    color: #cbdcfb;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   04. CONTENEDOR PRINCIPAL
+========================================================= */
+
+main {
+    width: 100%;
+    max-width: 1220px;
+    margin: 32px auto;
+    padding: 0 26px;
+}
+
+section {
+    min-width: 0;
+}
+
+section h2 {
+    margin-bottom: 10px;
+    color: var(--navy-800);
+}
+
+
+/* =========================================================
+   05. ACCESO DE USUARIOS
+========================================================= */
+
+#seccionAcceso {
+    margin-bottom: 26px;
+}
+
+/* Panel de inicio de sesión */
+
+#panelLogin {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 23px 26px;
+    box-shadow: var(--shadow-md);
+}
+
+#formLogin {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 14px;
+    margin-top: 14px;
+}
+
+#formLogin::before {
+    content: "ACCESO AL SISTEMA";
+    display: block;
+    width: 100%;
+    color: var(--navy-800);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+#formLogin input {
+    flex: 1;
+    min-width: 190px;
+    height: 48px;
+    padding: 0 15px;
+    color: var(--text-primary);
+    background: var(--surface-secondary);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+#formLogin input::placeholder {
+    color: var(--text-muted);
+}
+
+#formLogin input:focus {
+    background: #ffffff;
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.11);
+}
+
+#btnLogin {
+    min-width: 150px;
+    height: 48px;
+    padding: 0 23px;
+    background: linear-gradient(135deg, var(--blue-600), #1d4ed8);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.18);
+    transition: var(--transition);
+}
+
+#btnLogin:hover {
+    background: var(--navy-700);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.23);
+}
+
+#mensajeLogin {
+    width: 100%;
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+/* Panel de usuario autenticado */
+
+#panelUsuario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 17px 22px;
+    background: linear-gradient(110deg, #eff6ff, #f8fbff);
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+#usuarioActual {
+    display: flex;
+    align-items: center;
+    color: var(--navy-800);
+    font-size: 14px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+#usuarioActual::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    background: var(--green-600);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
+}
+
+#btnCerrarSesion {
+    min-height: 40px;
+    padding: 9px 17px;
+    color: var(--navy-700);
+    background: #ffffff;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+#btnCerrarSesion:hover {
+    background: var(--blue-100);
+    border-color: #93c5fd;
+}
+
+
+/* =========================================================
+   06. RESUMEN GENERAL DE ESTADOS
+========================================================= */
+
+.resumen-estados {
+    margin-bottom: 27px;
+}
+
+.resumen-titulo {
+    margin-bottom: 16px;
+}
+
+.resumen-titulo h2 {
+    margin-bottom: 4px;
+    color: var(--navy-800);
+    font-size: 20px;
+    font-weight: 750;
+    letter-spacing: -0.3px;
+}
+
+.resumen-titulo p {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.resumen-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    padding: 21px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid transparent;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.resumen-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.resumen-cantidad {
+    color: var(--text-primary);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.25;
+}
+
+.resumen-label {
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.resumen-card.operativo {
+    border-top-color: var(--green-600);
+}
+
+.resumen-card.inoperativo {
+    border-top-color: var(--red-600);
+}
+
+.resumen-card.mantenimiento {
+    border-top-color: var(--orange-600);
+}
+
+.resumen-card.cepa {
+    border-top-color: var(--blue-600);
+}
+
+
+/* =========================================================
+   07. BUSCADOR DE EQUIPOS
+========================================================= */
+
+.buscador {
+    margin-bottom: 23px;
+    padding: 27px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.buscador h2 {
+    color: var(--navy-800);
+    font-size: 21px;
+    font-weight: 750;
+    letter-spacing: -0.4px;
+}
+
+.buscador p {
+    margin-top: 5px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.buscador-contenido {
+    display: flex;
+    gap: 12px;
+    margin-top: 19px;
+}
+
+.buscador input {
+    flex: 1;
+    min-width: 0;
+    height: 51px;
+    padding: 0 17px;
+    color: var(--text-primary);
+    background: var(--surface-secondary);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    transition: var(--transition);
+}
+
+.buscador input::placeholder {
+    color: var(--text-muted);
+}
+
+.buscador input:focus {
+    background: #ffffff;
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.11);
+}
+
+
+/* =========================================================
+   08. BOTONES GENERALES
+========================================================= */
+
+button {
+    min-height: 45px;
+    padding: 11px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#btnBuscar {
+    min-width: 125px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--blue-600), #1d4ed8);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.17);
+}
+
+#btnBuscar:hover {
+    background: var(--navy-700);
+    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.22);
+}
+
+.btn-estado {
+    color: #ffffff;
+    background: var(--blue-600);
+}
+
+.btn-estado:hover {
+    background: var(--navy-700);
+}
+
+
+/* =========================================================
+   09. RESULTADO Y TARJETA DEL EQUIPO
+========================================================= */
+
+.equipo {
+    margin-bottom: 17px;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.equipo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 23px;
+}
+
+.etiqueta {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+
+.equipo-header h2 {
+    margin: 0;
+    color: var(--navy-800);
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+}
+
+
+/* =========================================================
+   10. IMAGEN DEL EQUIPO
+========================================================= */
+
+.equipo-imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 310px;
+    margin-bottom: 24px;
+    background: linear-gradient(145deg, #f8fafc, #eef2f7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.equipo-imagen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   11. INDICADORES DE ESTADO
+========================================================= */
+
+.estado {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 30px;
+    background: var(--green-100);
+    color: var(--green-800);
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   12. INFORMACIÓN DEL EQUIPO
+========================================================= */
+
+.detalles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.detalles p {
+    min-width: 0;
+    padding: 15px;
+    background: var(--surface-secondary);
+    border: 1px solid #edf1f6;
+    border-radius: var(--radius-sm);
+    overflow-wrap: anywhere;
+}
+
+.detalles strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #475569;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   13. ACCIONES DEL EQUIPO
+========================================================= */
+
+.acciones {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.acciones button,
+.acciones a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-height: 49px;
+    padding: 12px 18px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-info {
+    color: #ffffff;
+    background: #475569;
+}
+
+.btn-info:hover {
+    background: #334155;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   14. PANEL DE CAMBIO DE ESTADO
+========================================================= */
+
+.panel-estado {
+    margin-top: 23px;
+    padding: 22px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.panel-estado h3 {
+    margin-bottom: 15px;
+    color: var(--navy-800);
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.panel-estado select {
+    width: 100%;
+    min-height: 49px;
+    margin-bottom: 13px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    background: #ffffff;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.panel-estado select:focus {
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.10);
+}
+
+#btnGuardarEstado {
+    width: 100%;
+    min-height: 49px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--green-600), #15803d);
+}
+
+#btnGuardarEstado:hover {
+    background: #166534;
+}
+
+
+/* =========================================================
+   15. HORÓMETRO
+========================================================= */
+
+#horometroInput {
+    width: 100%;
+    min-height: 49px;
+    margin-bottom: 13px;
+    padding: 10px 14px;
+    color: var(--text-primary);
+    background: #ffffff;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    transition: var(--transition);
+}
+
+#horometroInput:focus {
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.10);
+}
+
+
+/* =========================================================
+   16. BOTÓN NUEVA CONSULTA
+========================================================= */
+
+.nueva-consulta-contenedor {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 17px;
+    margin-bottom: 32px;
+}
+
+.btn-nueva-consulta {
+    min-height: 49px;
+    padding: 12px 23px;
+    color: #ffffff;
+    background: var(--navy-800);
+    border-radius: var(--radius-sm);
+}
+
+.btn-nueva-consulta:hover {
+    background: var(--blue-600);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.16);
+}
+
+
+/* =========================================================
+   17. MENSAJES Y NOTIFICACIONES
+========================================================= */
+
+.mensaje {
+    padding: 19px;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 13px;
+}
+
+.mensaje-inicial {
+    padding: 28px 20px;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px dashed var(--border-dark);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    font-size: 14px;
+}
+
+.mensaje.error {
+    color: var(--red-800);
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 4px solid var(--red-600);
+}
+
+
+/* =========================================================
+   18. EFECTOS DE INTERACCIÓN
+========================================================= */
+
+input:hover,
+select:hover {
+    border-color: #94a3b8;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(59, 130, 246, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   19. TABLETAS
+========================================================= */
+
+@media (max-width: 900px) {
+
+    main {
+        max-width: 100%;
+        padding: 0 20px;
+        margin: 26px auto;
+    }
+
+    .resumen-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .equipo-imagen {
+        height: 280px;
+    }
+
+    .equipo {
+        padding: 23px;
+    }
+
+}
+
+
+/* =========================================================
+   20. CELULARES
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 13px;
+    }
+
+    header {
+        padding: 22px 19px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    header p {
+        font-size: 12px;
+    }
+
+    main {
+        padding: 0 14px;
+        margin: 21px auto;
+    }
+
+    /* Acceso */
+
+    #panelLogin {
+        padding: 19px;
+    }
+
+    #formLogin {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 11px;
+    }
+
+    #formLogin input {
+        width: 100%;
+        min-width: 0;
+        height: 49px;
+    }
+
+    #btnLogin {
+        width: 100%;
+        height: 49px;
+    }
+
+    #panelUsuario {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 17px;
+    }
+
+    #btnCerrarSesion {
+        width: 100%;
+    }
+
+    /* Resumen */
+
+    .resumen-estados {
+        margin-bottom: 22px;
+    }
+
+    .resumen-titulo h2 {
+        font-size: 18px;
+    }
+
+    .resumen-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .resumen-card {
+        padding: 16px 14px;
+        border-radius: var(--radius-md);
+    }
+
+    .resumen-cantidad {
+        font-size: 30px;
+    }
+
+    .resumen-label {
+        font-size: 10px;
+    }
+
+    /* Buscador */
+
+    .buscador {
+        padding: 19px;
+        margin-bottom: 19px;
+    }
+
+    .buscador h2 {
+        font-size: 18px;
+    }
+
+    .buscador p {
+        font-size: 12px;
+    }
+
+    .buscador-contenido {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .buscador input {
+        width: 100%;
+        height: 49px;
+    }
+
+    #btnBuscar {
+        width: 100%;
+        min-height: 49px;
+    }
+
+    /* Equipo */
+
+    .equipo {
+        padding: 17px;
+        border-radius: var(--radius-md);
+    }
+
+    .equipo-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 17px;
+    }
+
+    .equipo-header h2 {
+        font-size: 24px;
+    }
+
+    .estado {
+        font-size: 11px;
+        padding: 7px 13px;
+    }
+
+    /* Imagen */
+
+    .equipo-imagen {
+        height: 220px;
+        margin-bottom: 18px;
+    }
+
+    /* Detalles */
+
+    .detalles {
+        grid-template-columns: 1fr;
+        gap: 9px;
+        font-size: 13px;
+    }
+
+    .detalles p {
+        padding: 12px;
+    }
+
+    /* Acciones */
+
+    .acciones {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 19px;
+    }
+
+    .acciones button,
+    .acciones a {
+        width: 100%;
+        min-height: 49px;
+    }
+
+    /* Paneles */
+
+    .panel-estado {
+        margin-top: 17px;
+        padding: 17px;
+    }
+
+    .panel-estado h3 {
+        font-size: 15px;
+    }
+
+    .panel-estado select,
+    #horometroInput {
+        min-height: 49px;
+    }
+
+    #btnGuardarEstado {
+        min-height: 49px;
+    }
+
+    /* Nueva consulta */
+
+    .nueva-consulta-contenedor {
+        justify-content: stretch;
+        margin-top: 13px;
+    }
+
+    .btn-nueva-consulta {
+        width: 100%;
+        min-height: 49px;
+    }
+
+    /* Mensajes */
+
+    .mensaje,
+    .mensaje-inicial {
+        padding: 17px;
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   21. CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 360px) {
+
+    main {
+        padding: 0 10px;
+    }
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    .resumen-card {
+        padding: 13px 11px;
+    }
+
+    .resumen-cantidad {
+        font-size: 26px;
+    }
+
+    .resumen-label {
+        font-size: 9px;
+    }
+
+    .equipo {
+        padding: 13px;
+    }
+
+    .equipo-imagen {
+        height: 185px;
+    }
+
+}
+
+
+/* =========================================================
+   22. ACCESIBILIDAD Y MOVIMIENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
+
+
+
+/* =========================================
+   ACCESO DE USUARIOS DISCRETO Y DESPLEGABLE
+========================================= */
+
+.acceso-discreto {
+    background: transparent;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.acceso-discreto summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 13px;
+    color: #64748b;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.2s ease;
+}
+
+.acceso-discreto summary::-webkit-details-marker {
+    display: none;
+}
+
+.acceso-discreto summary:hover {
+    color: #1e40af;
+    border-color: #bfdbfe;
+    background: #eff6ff;
+}
+
+.acceso-indicacion {
+    color: #2563eb;
+    font-size: 11px;
+    margin-left: 5px;
+}
+
+.acceso-discreto[open] {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.acceso-discreto[open] summary {
+    border: none;
+    padding: 3px 0 12px;
+    background: transparent;
+}
+
+.acceso-discreto #formLogin {
+    margin-top: 8px;
+}
+
+.acceso-discreto #formLogin::before {
+    display: none;
+}
+
+.acceso-discreto[hidden] {
+    display: none !important;
+}
